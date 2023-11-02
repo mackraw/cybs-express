@@ -1,0 +1,11 @@
+.image-container {
+  display: border-box;
+}
+
+.icon {
+  width: 4em;
+}
+
+.icon-small {
+  width: 2em;
+}
