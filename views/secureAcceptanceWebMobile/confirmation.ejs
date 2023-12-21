@@ -1,0 +1,21 @@
+<h1>Confirmation</h1>
+<div class="container card">
+    <div class="card-body">
+<form id="payment_confirmation" action="https://testsecureacceptance.cybersource.com/pay" method="post" />
+
+    <h3>Review Payment Details</h3>
+    <div >
+        <% for (const [name, value] of Object.entries(params)) { %>
+        <div class="row"><span class="fieldName col-md-4"><%= name %>: </span><span class="fieldValue col-md-8"><%= value %></span></div>
+        <% } %>
+    </div>
+
+<% for (const [name, value] of Object.entries(params)) { %>
+<input type="hidden" id="<%= name %>" name="<%= name %>" value="<%= value %>" />
+<% } %>
+
+<input type="hidden" id="signature" name="signature" value="<%= signature %>" />
+<input class="btn btn-primary" type="submit" id="submit" value="Confirm" />
+</form>
+    </div>
+</div>

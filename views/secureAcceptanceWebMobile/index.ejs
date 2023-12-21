@@ -1,0 +1,86 @@
+<h2>Secure Acceptance - Hosted Checkout - Authorization</h2>
+<div class="container card">
+    <div class="card-body">
+        <h3>Payment Details</h3>
+        <form id="payment_form" action="secureAcceptanceWebMobile/confirmation" method="post">
+            <input type="hidden" name="access_key" value="<%- accessKey %>" />
+            <input type="hidden" name="profile_id" value="<%- profileId %>" />
+            <input type="hidden" name="transaction_uuid" value="<%- uuid %>"" />
+            <input
+                type="hidden"
+                name="signed_field_names"
+                value="access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency" />
+            <input type="hidden" name="unsigned_field_names" />
+            <input
+                type="hidden"
+                name="signed_date_time"
+                value="<%= new Date(Date.now()).toISOString().slice(0, 19) + 'Z'; %>" />
+            <input type="hidden" name="locale" value="en" />
+            <div id="paymentDetailsSection" class="form-group">
+                <div class="form-row col-md-6">
+                    <label for="transaction_type">transaction_type:</label>
+                    <select class="form-control" name="transaction_type" id="transaction_type">
+                        <option value="authorization">authorization</option>
+                        <option value="authorization,create_payment_token">authorization,create_payment_token</option>
+                        <option value="authorization,update_payment_token">authorization,update_payment_token</option>
+                        <option value="sale,create_payment_token">sale,create_payment_token</option>
+                        <option value="sale,update_payment_token">sale,update_payment_token</option>
+                    </select>
+                </div>
+                <div class="form-row col-md-6">
+                    <label for="reference_number">reference_number:</label>
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="reference_number"
+                        size="34"
+                        value="<%= getTimeStamp(); %>" />
+                </div>
+                <div class="form-row col-md-6" id="dynamicInputContainer"></div>
+                <div class="form-row col-md-6">
+                    <label for="amount">amount:</label
+                    ><input class="form-control" type="text" name="amount" size="34" value="4.55" />
+                </div>
+                <div class="form-row col-md-6">
+                    <label for="currency">currency:</label
+                    ><input class="form-control" type="text" name="currency" size="34" value="USD" />
+                </div>
+            </div>
+            <input class="btn btn-primary" type="submit" id="submit" name="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+<script>
+    const transactionTypeElement = document.getElementById('transaction_type');
+    transactionTypeElement.addEventListener('change', () => {
+        const dynamicInputContainer = document.getElementById('dynamicInputContainer');
+        const targetString = 'payment_token';
+        const signedFieldsElement = document.querySelector('[name="signed_field_names"]');
+
+        if (transactionTypeElement.value.includes('update_payment_token')) {
+            // Create new label element
+            const labelElement = document.createElement('label');
+            labelElement.for = targetString;
+            labelElement.innerText = targetString;
+
+            // Create new input field
+            const inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.classList = 'form-control';
+            inputField.value = '0819A2CCA9DE1573E063AF598E0A8E8A';
+            inputField.name = targetString;
+
+            // Append to the container
+            dynamicInputContainer.innerHTML = ''; // Clear previous content
+            dynamicInputContainer.classList = 'form-row col-md-6';
+            dynamicInputContainer.appendChild(labelElement);
+            dynamicInputContainer.appendChild(inputField);
+
+            // append to signed filed names
+            signedFieldsElement.value += ',payment_token';
+        } else {
+            // Clear the container if a different option is selected
+            dynamicInputContainer.innerHTML = '';
+        }
+    });
+</script>

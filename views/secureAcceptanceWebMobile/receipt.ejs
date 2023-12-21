@@ -1,0 +1,7 @@
+<h1>Receipt</h1>
+
+<div>
+    <% for (const [name, value] of Object.entries(params)) { %>
+    <div><span class="fieldName"><%= name %>: </span><span class="fieldValue"><%= value %></span></div>
+    <% } %>
+</div>
