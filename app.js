@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const microform11Router = require('./routes/microform11');
 const secureAcceptanceWebMobileRouter = require('./routes/secureAcceptanceWebMobile');
+const secureAcceptanceCheckoutRouter = require('./routes/secureAcceptanceCheckout');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/microform11', microform11Router);
 app.use('/secureAcceptanceWebMobile', secureAcceptanceWebMobileRouter);
+app.use('/secureAcceptanceCheckout', secureAcceptanceCheckoutRouter);
 
 app.locals.generateUUIDv4 = () => {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>

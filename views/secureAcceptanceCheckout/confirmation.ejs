@@ -1,0 +1,39 @@
+<div class="container card">
+    <div class="card-body">
+<form id="payment_confirmation" action="https://testsecureacceptance.cybersource.com/silent/pay" method="post" />
+
+    <h3>Review Payment Details</h3>
+    <div >
+        <% for (const [name, value] of Object.entries(params)) { %>
+        <div class="row"><span class="fieldName col-md-4"><%= name %>: </span><span class="fieldValue col-md-8"><%= value %></span></div>
+        <% } %>
+    </div>
+
+<% for (const [name, value] of Object.entries(params)) { %>
+<input type="hidden" id="<%= name %>" name="<%= name %>" value="<%= value %>" />
+<% } %>
+
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label" for="card_type">card_type:</label>
+    <div class="col-sm-8">
+        <input class="form-control" type="text" name="card_type" size="34" value="001" />
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label" for="card_number">card_number:</label>
+    <div class="col-sm-8">
+        <input class="form-control" type="text" name="card_number" size="34" value="4111111111111111" />
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label" for="card_expiry_date">card_expiry_date:</label>
+    <div class="col-sm-8">
+        <input class="form-control" type="text" name="card_expiry_date" size="34" value="12-2027" />
+    </div>
+</div>
+
+<input type="hidden" id="signature" name="signature" value="<%= signature %>" />
+<input class="btn btn-primary" type="submit" id="submit" value="Pay" />
+</form>
+    </div>
+</div>
