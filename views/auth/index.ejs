@@ -1,3 +1,104 @@
-<h1>Hello from auth</h1>
+<h1>Authorization</h1>
 
 <a href="auth/deeper">More</a>
+
+<div class="container card">
+    <div class="card-body">
+        <h3>Payment Details</h3>
+        <form id="payment_form" action="auth/processPayment" method="post">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="firstName">firstName:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="firstName" size="34" value="First" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="lastName">lastName:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="lastName" size="34" value="Last" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="address1">address1:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="address1" size="34" value="123 Test St" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="locality">locality:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="locality" size="34" value="Austin" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="administrativeArea">administrativeArea:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="administrativeArea" size="34" value="TX" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="postalCode">postalCode:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="postalCode" size="34" value="78758" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="country">country:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="country" size="34" value="US" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="email">email:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="email" size="34" value="null@cybersource.com" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="totalAmount">totalAmount:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="totalAmount" size="34" value="12.34" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="currency">currency:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="currency" size="34" value="USD" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="number">number:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="number" size="34" value="4111111111111111" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="expirationMonth">expirationMonth:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="expirationMonth" size="34" value="12" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="expirationYear">expirationYear:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="expirationYear" size="34" value="2027" />
+                </div>
+            </div>
+
+            <input class="btn btn-primary" type="submit" id="submit" name="submit" value="Pay" />
+        </form>
+    </div>
+</div>
+

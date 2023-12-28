@@ -6,7 +6,7 @@ require('dotenv').config()
 
 // common parameters
 const AuthenticationType = 'http_signature';
-const RunEnvironment = 'apitest.cybersource.com';
+const RunEnvironment = process.env.CYBS_HOST;
 const MerchantId = process.env.CYBS_MID;
 
 // http_signature parameters
